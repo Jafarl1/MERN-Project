@@ -1,0 +1,30 @@
+.bloggers {
+  width: 100%;
+  min-height: calc(100vh - 255px);
+  padding-top: 30px;
+
+  .h1 {
+    font-size: 18px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    position: relative;
+    color: var(--black);
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 170px;
+      height: 1px;
+      background-color: var(--black);
+      opacity: 0.5;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

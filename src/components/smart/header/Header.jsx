@@ -3,8 +3,11 @@ import Container from "../../ui/container/Container";
 import logo_icon from "../../../assets/icons/header-logo.png";
 import auth_icon from "../../../assets/icons/auth-icon.png";
 import styles from "./header.module.css";
+import { useAuth } from "../../../hooks/useAuth";
 
 function Header() {
+  const { loggedUser } = useAuth();
+
   return (
     <header className={styles.header}>
       <Container>
@@ -16,16 +19,23 @@ function Header() {
           <nav className={styles.navigation_menu}>
             <ul>
               <li>
-                <NavLink>Bloggers</NavLink>
+                <NavLink to="/">About</NavLink>
               </li>
               <li>
-                <NavLink>My places</NavLink>
+                <NavLink to="/">Bloggers</NavLink>
               </li>
-              <li>
-                <NavLink>Add place</NavLink>
-              </li>
+              {loggedUser && (
+                <>
+                  <li>
+                    <NavLink to="/:uid/places">My places</NavLink>
+                  </li>
+                  <li>
+                    <NavLink>Add place</NavLink>
+                  </li>
+                </>
+              )}
             </ul>
-            <NavLink>
+            <NavLink to="login">
               <img src={auth_icon} alt="Auth" />
             </NavLink>
           </nav>
