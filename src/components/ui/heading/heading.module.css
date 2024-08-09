@@ -1,6 +1,7 @@
 .heading {
   width: min-content;
-  margin: 20px 0 5px;
+  height: 40px;
+  padding-top: 20px;
   display: flex;
   gap: 25px;
   position: relative;
@@ -30,7 +31,7 @@
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px;
+    bottom: -5px;
     width: 120%;
     height: 1px;
     background-color: var(--black);

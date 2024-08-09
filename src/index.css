@@ -6,7 +6,6 @@
   text-decoration: none;
   box-sizing: border-box;
   font-family: "Poppins";
-  font-size: 16px;
 }
 :root {
   --dark-pink: #bf2c47;
@@ -17,4 +16,3 @@
   --black: #333333;
   --white: #fdfdfd;
 }
-

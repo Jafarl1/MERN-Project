@@ -1,7 +1,11 @@
-import React from "react";
+import Container from "../../components/ui/container/Container";
 
 function SignIn() {
-  return <div>SignIn</div>;
+  return (
+    <Container>
+      <h1>Sign in page</h1>
+    </Container>
+  );
 }
 
 export default SignIn;

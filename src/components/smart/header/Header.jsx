@@ -27,7 +27,7 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <Container>
+      <Container style={{ height: "100%" }}>
         <div className={styles.content}>
           <div className={styles.logo}>
             <img src={logo_icon} alt="Logo" />

@@ -38,7 +38,7 @@ function Places() {
   ];
 
   return (
-    <Container>
+    <Container >
       <Heading
         track={[
           { title: "Bloggers", to: "/" },

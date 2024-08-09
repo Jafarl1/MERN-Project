@@ -1,9 +1,11 @@
-import React from 'react'
+import Container from "../../components/ui/container/Container";
 
 function SignUp() {
   return (
-    <div>SignUp</div>
-  )
+    <Container>
+      <h1>Sign up page</h1>
+    </Container>
+  );
 }
 
-export default SignUp
+export default SignUp;
