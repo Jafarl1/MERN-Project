@@ -32,21 +32,43 @@
       display: flex;
       align-items: center;
       gap: 50px;
+      position: relative;
+
+      a {
+        font-size: 16px;
+        color: var(--light-blue);
+      }
 
       ul {
         display: flex;
         gap: 20px;
+
+        li {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          img {
+            height: 26px;
+          }
+
+          &:last-child {
+            margin-left: 15px;
+          }
+        }
       }
 
-      a {
+      .signPopup {
+        position: absolute;
+        right: 0;
+        top: 140%;
         display: flex;
-        align-items: center;
-        font-size: 16px;
-        color: var(--light-blue);
-
-        img {
-          height: 26px;
-        }
+        flex-direction: column;
+        gap: 3px;
+        padding: 8px 12px;
+        background-color: var(--dark-pink);
+        border-radius: 4px;
+        transition: 0.3s;
       }
     }
   }

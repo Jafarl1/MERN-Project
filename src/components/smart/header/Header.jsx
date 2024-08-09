@@ -1,12 +1,29 @@
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 import Container from "../../ui/container/Container";
 import logo_icon from "../../../assets/icons/header-logo.png";
 import auth_icon from "../../../assets/icons/auth-icon.png";
 import styles from "./header.module.css";
-import { useAuth } from "../../../hooks/useAuth";
 
 function Header() {
+  const [signPopup, setSignPopup] = useState(false);
   const { loggedUser } = useAuth();
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setSignPopup(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -19,7 +36,7 @@ function Header() {
           <nav className={styles.navigation_menu}>
             <ul>
               <li>
-                <NavLink to="/">About</NavLink>
+                <NavLink to="/about">About</NavLink>
               </li>
               <li>
                 <NavLink to="/">Bloggers</NavLink>
@@ -27,17 +44,27 @@ function Header() {
               {loggedUser && (
                 <>
                   <li>
-                    <NavLink to="/:uid/places">My places</NavLink>
+                    <NavLink to="/:id/places">My places</NavLink>
                   </li>
                   <li>
                     <NavLink>Add place</NavLink>
                   </li>
                 </>
               )}
+              <li onClick={() => setSignPopup((prev) => !prev)}>
+                <img src={auth_icon} alt="Auth" />
+              </li>
             </ul>
-            <NavLink to="login">
-              <img src={auth_icon} alt="Auth" />
-            </NavLink>
+            {signPopup && (
+              <div ref={popupRef} className={styles.signPopup}>
+                <NavLink to="/signin" onClick={() => setSignPopup(false)}>
+                  Sign In
+                </NavLink>
+                <NavLink to="/signup" onClick={() => setSignPopup(false)}>
+                  Sign Up
+                </NavLink>
+              </div>
+            )}
           </nav>
         </div>
       </Container>

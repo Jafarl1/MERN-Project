@@ -1,0 +1,39 @@
+.heading {
+  width: min-content;
+  margin: 20px 0 5px;
+  display: flex;
+  gap: 25px;
+  position: relative;
+
+  a {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--black);
+    position: relative;
+    transition: 0.2s;
+
+    &:hover {
+      color: var(--pink);
+    }
+
+    &:not(:last-child) {
+      &::after {
+        content: "\2192";
+        position: absolute;
+        top: 0;
+        right: -18px;
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 120%;
+    height: 1px;
+    background-color: var(--black);
+    opacity: 0.2;
+  }
+}
