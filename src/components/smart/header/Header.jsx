@@ -27,7 +27,7 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <Container style={{ height: "100%" }}>
+      <Container style={{ minHeight: 0, height: "100%" }}>
         <div className={styles.content}>
           <div className={styles.logo}>
             <img src={logo_icon} alt="Logo" />
@@ -47,7 +47,7 @@ function Header() {
                     <NavLink to="/:id/places">My places</NavLink>
                   </li>
                   <li>
-                    <NavLink>Add place</NavLink>
+                    <NavLink to="/addplace">Add place</NavLink>
                   </li>
                 </>
               )}

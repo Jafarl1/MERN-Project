@@ -16,3 +16,6 @@
   --black: #333333;
   --white: #fdfdfd;
 }
+.swal2-confirm {
+  background-color: var(--dark-pink);
+}

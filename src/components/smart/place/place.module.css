@@ -1,11 +1,10 @@
 .place {
-  width: 300px;
-  height: 440px;
+  width: 400px;
+  height: 480px;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0px 0px 6px 0px rgba(43, 43, 43, 0.4);
-  cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 
   .image {
     width: 100%;
@@ -36,6 +35,38 @@
       font-size: 12px;
       font-style: italic;
       margin-top: 10px;
+    }
+  }
+
+  .btnGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+
+    button {
+      padding: 5px 12px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+
+      &:first-child {
+        border-color: var(--dark-blue);
+        background-color: var(--dark-blue);
+      }
+      &:nth-child(2) {
+        border-color: var(--pink);
+        background-color: var(--pink);
+      }
+      &:last-child {
+        border-color: var(--dark-pink);
+        background-color: var(--dark-pink);
+      }
     }
   }
 

@@ -6,7 +6,6 @@ import Heading from "../../components/ui/heading/Heading";
 
 function Places() {
   const { uid } = useParams();
-  console.log(uid);
 
   const dummyPlaces = [
     {

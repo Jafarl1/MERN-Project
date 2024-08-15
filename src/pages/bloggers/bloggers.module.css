@@ -1,7 +1,6 @@
 .bloggers {
   width: 100%;
 
-
   .h1 {
     font-size: 18px;
     font-weight: 400;
@@ -24,6 +23,5 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 20px 0;
   }
 }
