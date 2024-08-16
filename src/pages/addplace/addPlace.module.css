@@ -1,0 +1,6 @@
+.addPlace {
+  background-image: url(../../assets/images/desert.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import Container from "../../ui/container/Container";
@@ -8,22 +8,21 @@ import styles from "./header.module.css";
 
 function Header() {
   const [signPopup, setSignPopup] = useState(false);
-  const { loggedUser } = useAuth();
-  const popupRef = useRef(null);
+  const { loggedUser, setLoggedUser } = useAuth();
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        setSignPopup(false);
-      }
-    }
+  const handleSignOut = () => {
+    closePopup();
+    setLoggedUser(null);
+  };
 
-    document.addEventListener("mousedown", handleClickOutside);
+  const toggleSignPopup = (event) => {
+    event.stopPropagation();
+    setSignPopup((prev) => !prev);
+  };
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  const closePopup = () => setSignPopup(false);
+
+  window.onclick = closePopup;
 
   return (
     <header className={styles.header}>
@@ -51,18 +50,31 @@ function Header() {
                   </li>
                 </>
               )}
-              <li onClick={() => setSignPopup((prev) => !prev)}>
+              <li onClick={toggleSignPopup}>
                 <img src={auth_icon} alt="Auth" />
               </li>
             </ul>
             {signPopup && (
-              <div ref={popupRef} className={styles.signPopup}>
-                <NavLink to="/signin" onClick={() => setSignPopup(false)}>
-                  Sign In
-                </NavLink>
-                <NavLink to="/signup" onClick={() => setSignPopup(false)}>
-                  Sign Up
-                </NavLink>
+              <div className={styles.signPopup}>
+                {loggedUser ? (
+                  <>
+                    <NavLink to="/account" onClick={closePopup}>
+                      Account
+                    </NavLink>
+                    <NavLink to="/" onClick={handleSignOut}>
+                      Sign out
+                    </NavLink>
+                  </>
+                ) : (
+                  <>
+                    <NavLink to="/signin" onClick={closePopup}>
+                      Sign In
+                    </NavLink>
+                    <NavLink to="/signup" onClick={closePopup}>
+                      Sign Up
+                    </NavLink>
+                  </>
+                )}
               </div>
             )}
           </nav>
